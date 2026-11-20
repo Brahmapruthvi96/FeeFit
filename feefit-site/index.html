@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FeeFit: Personalised Banking</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3EFE8;--ink:#151515;--red:#FF5A36;--mut:#6b665d;--rule:#cfc9bc;--card:#fff;--dk:#151515;--dkt:#F3EFE8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121212;--ink:#f1ede4;--mut:#a39e93;--rule:#33312d;--card:#1c1b19;--dk:#000;--dkt:#f1ede4}}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Inter,system-ui,Arial,sans-serif}
+h1,h2,h3{font-family:'Archivo Black','Arial Black',Arial,sans-serif;font-weight:400;line-height:1.08;margin:0}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:18px;overflow-x:auto;padding:14px 20px;background:var(--bg);border-bottom:1px solid var(--rule);font-size:13px;white-space:nowrap}
+nav b{font-family:'Archivo Black','Arial Black',sans-serif;font-weight:400;color:var(--red);margin-right:6px}
+nav a{color:var(--ink);text-decoration:none}nav a:hover{color:var(--red)}
+section{padding:72px 6vw;max-width:1100px;margin:auto}
+.tag{color:var(--red);font-weight:600;letter-spacing:.2em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
+h2{font-size:clamp(26px,4.4vw,42px);margin-bottom:22px}
+.lead{font-family:Georgia,serif;font-style:italic;font-size:clamp(18px,2.4vw,24px);max-width:640px}
+.hero{min-height:88vh;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(54px,11vw,120px)}
+.who{margin-top:26px;border-top:5px solid var(--ink);padding-top:14px;width:fit-content;font-size:15px}
+.rs{background:var(--red);color:#151515;border-radius:24px;aspect-ratio:3/4;display:grid;place-items:center;font:400 clamp(120px,22vw,260px)/1 'Archivo Black','Arial Black',sans-serif}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--card);border:1px solid var(--rule);padding:20px;border-radius:6px}
+.card h3{font-size:16px;margin-bottom:8px}.card p{margin:0;color:var(--mut);font-size:14.5px}
+.card small{display:block;margin-top:10px;font-size:12px}.card a{color:var(--red)}
+.big{font:400 40px/1 'Archivo Black','Arial Black',sans-serif;color:var(--red);margin-bottom:8px}
+.dark{background:var(--dk);color:var(--dkt);max-width:none}.dark>.in{max-width:1100px;margin:auto}
+.dark .card{background:#1c1b19;border-color:#33312d;color:#f1ede4}.dark .card p{color:#b9b4a8}
+.steps{counter-reset:s;display:grid;gap:0}
+.step{display:grid;grid-template-columns:60px 150px 1fr;gap:14px;border-top:3px solid var(--ink);padding:16px 0}
+.step i{font:400 20px 'Archivo Black','Arial Black',sans-serif;color:var(--red);font-style:normal}.step b{font-family:'Archivo Black','Arial Black',sans-serif;font-weight:400}
+.demo{display:grid;grid-template-columns:1fr 1.2fr;gap:28px}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 4px}label span{float:right;color:var(--red)}
+input[type=range]{width:100%;accent-color:var(--red)}
+.out{background:var(--dk);color:var(--dkt);padding:18px;border-radius:6px;margin-top:16px;font-size:15px}.out b{color:var(--red)}
+svg text{fill:var(--mut);font:11px Inter,sans-serif}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin-top:6px}.legend i{display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:50%}
+.note{font-size:12.5px;color:var(--mut);margin-top:10px}
+.btn{display:inline-block;margin-top:14px;background:var(--red);color:#151515;border:0;padding:11px 18px;font:600 14px Inter,sans-serif;border-radius:4px;cursor:pointer;text-decoration:none}
+.st{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;margin-bottom:8px;background:var(--red);color:#151515}.st.pl{background:var(--rule);color:var(--ink)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.on{opacity:1;transform:none}
+footer{padding:36px 6vw;border-top:1px solid var(--rule);font-size:13px;color:var(--mut);text-align:center}
+@media(max-width:760px){.hero,.demo{grid-template-columns:1fr}.rs{aspect-ratio:2/1}.step{grid-template-columns:40px 1fr}.step p{grid-column:1/-1;margin:0}}
+@media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+</style></head><body>
+<nav><b>FeeFit</b><a href="#problem">Problem</a><a href="#incidents">Real cases</a><a href="#how">How it works</a><a href="#demo">Live demo</a><a href="#evidence">Evidence</a><a href="#develop">Developments</a><a href="#downloads">Downloads</a></nav>
+
+<section class="hero" id="top"><div class="rv">
+<div class="tag">DSV project · Banking analytics</div>
+<h1>FeeFit</h1>
+<p class="lead">Personalised banking: finding which fees push customers away, and pricing each customer fairly.</p>
+<div class="who"><b>Brahma Pruthvi</b><br>ENG24CT0003 · CST Dept</div></div>
+<div class="rs rv" aria-hidden="true">₹</div></section>
+
+<section id="problem"><div class="tag rv">01 · The problem</div>
+<h2 class="rv">Same fee. Different customers.<br>One closed account.</h2>
+<div class="grid">
+<div class="card rv"><div class="big">COST</div><p>Maintenance charges, debit card fees and penalties are the same for everyone, though a ₹300 fee means very different things to different people.</p></div>
+<div class="card rv"><div class="big">IRRITATION</div><p>Small, repeated charges feel like being nickel-and-dimed, and they spoil an otherwise fine banking experience.</p></div>
+<div class="card rv"><div class="big">EXIT</div><p>Customers rarely close loudly. Balances drain and salary credits move first, so closures understate the damage.</p></div></div>
+<p class="lead rv" style="margin-top:28px">Which fees push which customers away, and what is the best fee for each type?</p></section>
+
+<section class="dark" id="incidents"><div class="in"><div class="tag rv">02 · Real cases and issues</div>
+<h2 class="rv">This is not hypothetical.</h2>
+<div class="grid">
+<div class="card rv"><h3>SBI’s minimum balance U-turn</h3><p>SBI scrapped the requirement in 2012, brought it back in April 2017 and faced heavy criticism. It collected over ₹2,400 crore in penalties in 2017–18, then removed the penalty in March 2020 along with SMS charges.</p><small><a href="https://www.thenewsminute.com/money/no-minimum-balance-required-savings-accounts-sbi-119986">The News Minute</a></small></div>
+<div class="card rv"><h3>Charges on zero-balance accounts</h3><p>Moneylife reported SBI collected about ₹300 crore in service charges from zero-balance accounts during 2015–20, and later refunded charges on digital transactions.</p><small><a href="https://www.moneylife.in/article/sbi-refunds-charges-collected-on-digital-transactions-in-zero-balance-accounts-continues-to-levy-charges-above-4-cash-withdrawals/63537.html">Moneylife</a></small></div>
+<div class="card rv"><h3>Public banks drop the penalty</h3><p>In 2025 more public sector banks, including Canara, PNB, Indian Bank and Bank of Baroda, removed the penalty after internal studies. Such penalties were about 0.3% of public banks’ revenue in FY24.</p><small><a href="https://www.freepressjournal.in/amp/business/minimum-balance-rules-scrapped-by-government-banks-know-how-much-they-earned-from-penalties">Free Press Journal</a></small></div>
+<div class="card rv"><h3>Still earning from penalties</h3><p>Parliament was told in July 2026 that banks collected over ₹7,086 crore in FY26 from minimum balance penalties, with private banks about 70% of it.</p><small><a href="https://swarajyamag.com/news-brief/banks-earned-over-rs-7086-crore-from-minimum-balance-penalties-in-fy26">Swarajya</a></small></div>
+<div class="card rv"><h3>Fees and switching, worldwide</h3><p>A J.D. Power study found US customers were more than twice as likely to switch banks after being charged any fee in the previous three months. Capital One and Ally dropped overdraft fees in 2021.</p><small><a href="https://www.bankingdive.com/news/fees-make-customers-twice-as-likely-to-switch-banks-study-finds/618107/">Banking Dive</a></small></div></div>
+<p class="note">Lesson: banks keep reversing one-size-fits-all rules after the damage is done. FeeFit measures the tolerance first.</p></div></section>
+
+<section id="how"><div class="tag rv">03 · How FeeFit works</div>
+<h2 class="rv">Measure the fee each customer type can tolerate.</h2>
+<div class="steps">
+<div class="step rv"><i>01</i><b>IDENTIFY</b><p>Cluster customers by behaviour (balance, usage, tenure) with K-Means. Age, gender and religion are never used.</p></div>
+<div class="step rv"><i>02</i><b>MEASURE</b><p>OLS regression estimates each segment’s fee-tolerance point: the fee level where churn risk starts to jump.</p></div>
+<div class="step rv"><i>03</i><b>PRESCRIBE</b><p>Net-value rule: pick the fee that maximises (1 − churn risk) × (fee + retained customer margin).</p></div>
+<div class="step rv"><i>04</i><b>CHECK</b><p>Fairness audit: compare fees and waiver rates across gender and geography and flag large gaps.</p></div></div></section>
+
+<section class="dark" id="demo"><div class="in"><div class="tag rv">04 · Live demo</div>
+<h2 class="rv">Try a customer. See the fee.</h2>
+<div class="demo rv"><div>
+<label>Average balance <span id="vb"></span></label><input id="b" type="range" min="0" max="300000" step="5000" value="40000">
+<label>App activity (0–100) <span id="va"></span></label><input id="a" type="range" min="0" max="100" step="5" value="50">
+<label>Years with bank <span id="vt"></span></label><input id="t" type="range" min="0" max="10" step="1" value="3">
+<label>Annual fee charged now <span id="vf"></span></label><input id="f" type="range" min="0" max="1500" step="25" value="600">
+<div class="out" id="out"></div></div>
+<div><svg id="ch" viewBox="0 0 440 300" width="100%" role="img" aria-label="Churn risk against annual fee by segment"></svg>
+<div class="legend"><span><i style="background:#FF5A36"></i>Low-balance</span><span><i style="background:#f1ede4"></i>Salaried regular</span><span><i style="background:#8A857C"></i>High-balance saver</span></div></div></div>
+<p class="note">The demo uses simulated numbers to show how the method behaves. Real estimates will replace them once the analysis on the bank churn dataset is complete.</p></div></section>
+
+<section id="evidence"><div class="tag rv">05 · Research and proof</div>
+<h2 class="rv">What the research says.</h2>
+<div class="grid">
+<div class="card rv"><span class="st">Direct proof</span><h3>Price drives switching</h3><p>Zhao, Noman &amp; Asiaei (2022), <i>Int. J. Bank Marketing</i> 40(2). Price is one of the significant drivers of retail bank switching (Malaysia).</p><small><a href="https://doi.org/10.1108/IJBM-01-2021-0042">doi.org/10.1108/IJBM-01-2021-0042</a></small></div>
+<div class="card rv"><span class="st">Direct proof</span><h3>Indian customers</h3><p>Agarwal (2019), <i>J. Marketing &amp; Consumer Research</i> 54. Survey of 450 customers of nine Indian banks finds price among eight switching drivers.</p><small><a href="https://doi.org/10.7176/JMCR/54-01">doi.org/10.7176/JMCR/54-01</a></small></div>
+<div class="card rv"><span class="st">Direct proof</span><h3>Switching in China</h3><p>Clemes, Gan &amp; Zhang (2010), <i>Int. J. Bank Marketing</i> 28(7). Empirical framework for why retail bank customers switch.</p><small><a href="https://doi.org/10.1108/02652321011085185">doi.org/10.1108/02652321011085185</a></small></div>
+<div class="card rv"><span class="st pl">Near the concept</span><h3>Personalised pricing can backfire</h3><p>Lu, Xu, Dai &amp; Zhou (2020), SSRN. In a grocery platform, personalised dynamic pricing raised churn as well as spending, so FeeFit tests rather than assumes.</p><small><a href="https://doi.org/10.2139/ssrn.3658362">doi.org/10.2139/ssrn.3658362</a></small></div>
+<div class="card rv"><span class="st pl">Near the concept</span><h3>Fees are a trigger, not the only cause</h3><p>J.D. Power (2012), via The Financial Brand: fees are a contributing factor for customers already dissatisfied, which is why segmentation matters.</p><small><a href="https://thefinancialbrand.com/news/customer-experience-banking/jd-power-3-trends-in-retail-banking-delivery-24251">The Financial Brand</a></small></div>
+<div class="card rv"><span class="st pl">Near the concept</span><h3>Blanket cuts don’t pay</h3><p>Industry analysis (Financial Brand, Bain) finds that dropping fees for everyone costs income with little retention gain. Fee income can reach up to 40% of revenue at some banks (McKinsey, via Infosys).</p><small><a href="https://thefinancialbrand.com/news/bank-marketing/banking-customer-attrition-analysis-55772">The Financial Brand</a></small></div></div></section>
+
+<section id="develop"><div class="tag rv">06 · Developments</div>
+<h2 class="rv">How we got here.</h2>
+<div class="steps">
+<div class="step rv"><i>01</i><b>PROBLEM</b><p>Started from small-business cash flow, judged it too vague, and searched for sharper, finance-focused questions.</p></div>
+<div class="step rv"><i>02</i><b>CONCEPT</b><p>Chose banks and customer churn, then framed the fee question as personalised banking. Approved by our professor.</p></div>
+<div class="step rv"><i>03</i><b>EVIDENCE</b><p>Collected papers, industry studies and real incidents (sections 02 and 05).</p></div>
+<div class="step rv"><i>04</i><b>METHOD</b><p>Designed the four stages: K-Means, OLS, net-value rule, fairness audit.</p></div>
+<div class="step rv"><i>05</i><b>DELIVERABLES</b><p>Website, presentation and research paper. Analysis code on the bank churn dataset comes next.</p></div></div>
+<h3 class="rv" style="margin:34px 0 14px;font-size:20px">Resources used</h3>
+<div class="grid">
+<div class="card rv"><span class="st">Data</span><p>Kaggle Bank Customer Churn dataset, extended with clearly labelled simulated fee variables.</p></div>
+<div class="card rv"><span class="st">Tools</span><p>Python with pandas, scikit-learn and statsmodels for the analysis; PowerPoint for the deck.</p></div>
+<div class="card rv"><span class="st">Sources</span><p>Journals (<i>Int. J. Bank Marketing</i>, SSRN), J.D. Power, The Financial Brand, Bain, Infosys, and Indian news and Parliament reports.</p></div>
+<div class="card rv"><span class="st pl">Status</span><p>Done: concept, deck draft, paper draft, website. Planned: real analysis and IEEE-format paper.</p></div></div></section>
+
+<section class="dark" id="downloads"><div class="in"><div class="tag rv">07 · Presentation and paper</div>
+<h2 class="rv">Take the work with you.</h2>
+<div class="grid">
+<div class="card rv"><span class="st">Available</span><h3>Presentation (PPT)</h3><p>The FeeFit deck: problem, existing approaches, our idea, novelty and impact.</p><a class="btn" href="FeeFit_Presentation.pptx" download>Download PPTX</a></div>
+<div class="card rv"><span class="st pl">In progress</span><h3>Research paper</h3><p>Draft paper with methodology, hypotheses and limitations. The IEEE-format version will be added here once finished.</p><div class="note">Paper PDF coming soon.</div></div></div></div></section>
+
+<footer>FeeFit · Brahma Pruthvi · ENG24CT0003 · CST Dept · November 2026<br>Demo figures are simulated; sources are linked above.</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const S=[{n:'Low-balance',c:'#FF5A36',b:.06,k:.0030,v:600},{n:'Salaried regular',c:'#f1ede4',b:.04,k:.0010,v:1800},{n:'High-balance saver',c:'#8A857C',b:.02,k:.0002,v:5000}];
+const seg=b=>b<25000?0:b>=100000?2:1;
+function p(s,f,a,t){const m=(1.25-.5*a/100)*(1-Math.min(t,10)*.02);return Math.min(.95,(S[s].b+S[s].k*Math.pow(f/100,2))*m)}
+const inr=n=>'₹'+n.toLocaleString('en-IN');
+function run(){
+ const b=+$('b').value,a=+$('a').value,t=+$('t').value,f=+$('f').value,s=seg(b);
+ $('vb').textContent=inr(b);$('va').textContent=a;$('vt').textContent=t;$('vf').textContent=inr(f);
+ let best=0,bv=-1,tol=1500;
+ for(let x=0;x<=1500;x+=25){const e=(1-p(s,x,a,t))*(x+S[s].v);if(e>bv){bv=e;best=x}}
+ for(let x=0;x<=1400;x+=25){if(p(s,x+100,a,t)-p(s,x,a,t)>.01){tol=x;break}}
+ const pr=p(s,f,a,t),cur=(1-pr)*(f+S[s].v);
+ const act=f>best+24?'Reduce the fee to '+inr(best)+'.':f<best-24?'The fee can rise to about '+inr(best)+' without hurting value.':'Keep the fee near '+inr(best)+'.';
+ $('out').innerHTML='Segment: <b>'+S[s].n+'</b><br>Churn risk at '+inr(f)+': <b>'+Math.round(pr*100)+'%</b><br>Fee-tolerance point: <b>'+inr(tol)+'</b><br>Recommendation: <b>'+act+'</b><br>Expected value per customer: '+inr(Math.round(cur))+' now vs '+inr(Math.round(bv))+' at the recommended fee.';
+ const W=440,H=300,L=40,B=30;let g='<line x1="'+L+'" y1="'+(H-B)+'" x2="'+(W-10)+'" y2="'+(H-B)+'" stroke="#8A857C"/><line x1="'+L+'" y1="10" x2="'+L+'" y2="'+(H-B)+'" stroke="#8A857C"/>';
+ [0,25,50,75,100].forEach(v=>{const y=H-B-v*(H-B-10)/100;g+='<text x="4" y="'+(y+4)+'">'+v+'%</text><line x1="'+L+'" x2="'+(W-10)+'" y1="'+y+'" y2="'+y+'" stroke="#8A857C" stroke-opacity=".2"/>'});
+ [0,500,1000,1500].forEach(v=>{g+='<text x="'+(L+v/1500*(W-L-10)-10)+'" y="'+(H-10)+'">'+v+'</text>'});
+ S.forEach((o,i)=>{let d='';for(let x=0;x<=1500;x+=50){d+=(x?'L':'M')+(L+x/1500*(W-L-10)).toFixed(1)+','+(H-B-Math.min(p(i,x,a,t),1)*100*(H-B-10)/100).toFixed(1)}g+='<path d="'+d+'" fill="none" stroke="'+o.c+'" stroke-width="'+(i===s?4:2)+'" opacity="'+(i===s?1:.55)+'"/>'});
+ const mx=L+f/1500*(W-L-10);g+='<line x1="'+mx+'" y1="10" x2="'+mx+'" y2="'+(H-B)+'" stroke="#FF5A36" stroke-dasharray="4 4"/><text x="'+(W-150)+'" y="22">Annual fee (₹) →  churn risk ↑</text>';
+ $('ch').innerHTML=g}
+['b','a','t','f'].forEach(i=>$(i).addEventListener('input',run));run();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+'ms';io.observe(el)});
+</script></body></html>
